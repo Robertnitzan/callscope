@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CallScope - Know What's Really Happening on Your Phone Lines</title>
+  <meta name="description" content="AI-powered call analysis that shows you which calls are real customers, which are spam, and which opportunities you're missing.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #eff6ff 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center text-xl">
+            📊
+          </div>
+          <span class="text-xl font-bold">CallScope</span>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#problem" class="text-gray-600 hover:text-gray-900 transition">The Problem</a>
+          <a href="#how" class="text-gray-600 hover:text-gray-900 transition">How It Works</a>
+          <a href="#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+          <a href="#demo" class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-5 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-green-200 transition-all">
+            See Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient pt-28 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <span>🎯</span> Stop guessing. Start knowing.
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+        <span class="gradient-text">49% of your calls</span><br>
+        are probably spam
+      </h1>
+      
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        You're paying for every ring. But do you know which calls are real customers and which are wasting your time? CallScope analyzes your phone data and shows you exactly what's happening.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a href="#demo" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-green-200 transition-all">
+          See a Real Analysis →
+        </a>
+        <a href="#how" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-green-500 hover:text-green-600 transition-all">
+          How It Works
+        </a>
+      </div>
+
+      <!-- Stats Preview -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+          <div class="text-3xl font-bold text-red-500">49%</div>
+          <div class="text-sm text-gray-500">Spam Calls</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+          <div class="text-3xl font-bold text-green-500">13%</div>
+          <div class="text-sm text-gray-500">Real Customers</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+          <div class="text-3xl font-bold text-purple-500">6</div>
+          <div class="text-sm text-gray-500">Missed Leads</div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+          <div class="text-3xl font-bold text-blue-500">$4,200</div>
+          <div class="text-sm text-gray-500">Lost Revenue</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section id="problem" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">The Phone Problem Nobody Talks About</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Every business with a phone number faces the same hidden issues</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-4xl mb-4">📵</div>
+          <h3 class="text-xl font-bold mb-3">Spam is Drowning Real Calls</h3>
+          <p class="text-gray-600">Your team answers robocalls, sales pitches, and wrong numbers. Each one costs time and money. But you can't see which are which.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-4xl mb-4">💸</div>
+          <h3 class="text-xl font-bold mb-3">Missed Calls = Lost Money</h3>
+          <p class="text-gray-600">When real customers call and get voicemail, most don't call back. You're losing leads and don't even know it.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-4xl mb-4">🔍</div>
+          <h3 class="text-xl font-bold mb-3">No Visibility</h3>
+          <p class="text-gray-600">Call logs show numbers and durations. But they don't tell you WHO called or WHAT they wanted. You're flying blind.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-4xl mb-4">⏱️</div>
+          <h3 class="text-xl font-bold mb-3">Manual Review is Impossible</h3>
+          <p class="text-gray-600">Listening to hundreds of calls? Reading transcripts? You don't have time. Neither does your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how" class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">From Raw Data to Clear Insights</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">We connect to your phone system and do the analysis automatically</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">1</div>
+          <h3 class="font-bold mb-2">Connect</h3>
+          <p class="text-gray-600 text-sm">Link your CallRail, RingCentral, or other phone system</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">2</div>
+          <h3 class="font-bold mb-2">Transcribe</h3>
+          <p class="text-gray-600 text-sm">AI converts recordings to text with speaker identification</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">3</div>
+          <h3 class="font-bold mb-2">Classify</h3>
+          <p class="text-gray-600 text-sm">Each call is categorized: Customer, Spam, Operations, etc.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">4</div>
+          <h3 class="font-bold mb-2">Dashboard</h3>
+          <p class="text-gray-600 text-sm">See everything in a beautiful, actionable dashboard</p>
+        </div>
+      </div>
+
+      <!-- Integration Logos -->
+      <div class="mt-16 text-center">
+        <p class="text-gray-500 mb-6">Works with popular phone systems</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+          <span class="text-xl font-semibold">CallRail</span>
+          <span class="text-xl font-semibold">RingCentral</span>
+          <span class="text-xl font-semibold">Twilio</span>
+          <span class="text-xl font-semibold">Vonage</span>
+          <span class="text-xl font-semibold">Grasshopper</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 px-6 bg-gray-900 text-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">See Real Results</h2>
+        <p class="text-xl text-gray-400">This is actual data from a concrete company. 415 calls analyzed.</p>
+      </div>
+
+      <div class="bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-700">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+          <div>
+            <div class="text-sm text-gray-400 mb-1">Live Demo</div>
+            <div class="text-2xl font-bold">Rhino Concrete - January 2026</div>
+          </div>
+          <a href="https://rhino-call-analyzer.vercel.app" target="_blank" class="bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2">
+            Open Full Dashboard
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-gray-700/50 rounded-xl p-4">
+            <div class="text-3xl font-bold">415</div>
+            <div class="text-sm text-gray-400">Total Calls</div>
+          </div>
+          <div class="bg-gray-700/50 rounded-xl p-4">
+            <div class="text-3xl font-bold text-green-400">333</div>
+            <div class="text-sm text-gray-400">Inbound</div>
+          </div>
+          <div class="bg-gray-700/50 rounded-xl p-4">
+            <div class="text-3xl font-bold text-red-400">133</div>
+            <div class="text-sm text-gray-400">Spam Calls</div>
+          </div>
+          <div class="bg-gray-700/50 rounded-xl p-4">
+            <div class="text-3xl font-bold text-blue-400">34</div>
+            <div class="text-sm text-gray-400">Real Customers</div>
+          </div>
+        </div>
+
+        <!-- Key Finding -->
+        <div class="bg-gradient-to-r from-red-500/20 to-red-600/20 border border-red-500/30 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="text-4xl">⚠️</div>
+            <div>
+              <h4 class="font-bold text-lg mb-2">Key Finding: 6 Missed Opportunities</h4>
+              <p class="text-gray-300">Real customers left voicemails requesting quotes. Without this analysis, these leads would have been invisible in the call log.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Built for Any Business with a Phone</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">If you receive calls, we can analyze them</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">🏠</div>
+          <div class="font-semibold">Home Services</div>
+          <div class="text-sm text-gray-500">HVAC, Plumbing, Electrical</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">⚖️</div>
+          <div class="font-semibold">Law Firms</div>
+          <div class="text-sm text-gray-500">Track lead quality</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">🏥</div>
+          <div class="font-semibold">Medical Practices</div>
+          <div class="text-sm text-gray-500">Appointment requests</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">🏢</div>
+          <div class="font-semibold">Real Estate</div>
+          <div class="text-sm text-gray-500">Buyer/seller inquiries</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">🚗</div>
+          <div class="font-semibold">Auto Services</div>
+          <div class="text-sm text-gray-500">Repair & maintenance</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">🍽️</div>
+          <div class="font-semibold">Restaurants</div>
+          <div class="text-sm text-gray-500">Reservations & orders</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">🏋️</div>
+          <div class="font-semibold">Fitness & Wellness</div>
+          <div class="text-sm text-gray-500">Membership inquiries</div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+          <div class="text-4xl mb-3">📦</div>
+          <div class="font-semibold">E-commerce</div>
+          <div class="text-sm text-gray-500">Support & sales</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple Pricing</h2>
+        <p class="text-xl text-gray-600">One-time analysis or ongoing monitoring</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- One-Time Analysis -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-sm font-semibold text-gray-500 mb-2">ONE-TIME</div>
+          <div class="text-4xl font-bold mb-2">$199</div>
+          <div class="text-gray-500 mb-6">Single month analysis</div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Up to 500 calls analyzed
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Full transcription
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Spam identification
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Missed opportunities report
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Interactive dashboard
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gray-100 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Monthly -->
+        <div class="bg-gradient-to-br from-green-500 to-blue-500 rounded-2xl p-8 text-white relative overflow-hidden">
+          <div class="absolute top-4 right-4 bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">POPULAR</div>
+          <div class="text-sm font-semibold text-green-100 mb-2">MONTHLY</div>
+          <div class="text-4xl font-bold mb-2">$149<span class="text-xl font-normal">/mo</span></div>
+          <div class="text-green-100 mb-6">Ongoing monitoring</div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2">
+              <span>✓</span> Unlimited calls
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✓</span> Real-time dashboard
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✓</span> Weekly email reports
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✓</span> Missed opportunity alerts
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✓</span> API access
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✓</span> Priority support
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all">
+            Start Free Trial
+          </a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-sm font-semibold text-gray-500 mb-2">ENTERPRISE</div>
+          <div class="text-4xl font-bold mb-2">Custom</div>
+          <div class="text-gray-500 mb-6">Multi-location businesses</div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Multiple phone systems
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Custom integrations
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> White-label dashboard
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Dedicated support
+            </li>
+            <li class="flex items-center gap-2 text-gray-600">
+              <span class="text-green-500">✓</span> Custom reporting
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gray-100 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all">
+            Contact Sales
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Stop Flying Blind on Your Phone Lines</h2>
+      <p class="text-xl text-gray-600 mb-8">Get your first analysis free. See exactly what's happening with your calls.</p>
+      
+      <div class="bg-gray-50 rounded-2xl p-8 max-w-md mx-auto">
+        <form class="space-y-4">
+          <input type="text" placeholder="Your name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
+          <input type="email" placeholder="Work email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
+          <input type="text" placeholder="Company name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
+          <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all text-gray-500">
+            <option value="">Phone system you use</option>
+            <option value="callrail">CallRail</option>
+            <option value="ringcentral">RingCentral</option>
+            <option value="twilio">Twilio</option>
+            <option value="other">Other</option>
+          </select>
+          <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-green-200 transition-all">
+            Get Free Analysis →
+          </button>
+        </form>
+        <p class="text-sm text-gray-500 mt-4">No credit card required. See results in 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center text-sm">
+            📊
+          </div>
+          <span class="text-white font-bold">CallScope</span>
+        </div>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#" class="hover:text-white transition">Privacy</a>
+          <a href="#" class="hover:text-white transition">Terms</a>
+          <a href="#" class="hover:text-white transition">Contact</a>
+        </div>
+        <div class="text-sm">
+          © 2026 CallScope. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
