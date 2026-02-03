@@ -1,12 +1,17 @@
 {
   "name": "callscope",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "AI-powered call analysis for businesses",
+  "type": "module",
+  "bin": {
+    "callscope": "./cli/index.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "fetch": "node cli/index.mjs fetch",
+    "stats": "node cli/index.mjs stats",
+    "start": "npx serve ."
+  },
+  "keywords": ["callrail", "call-analysis", "phone", "ai", "business"],
+  "author": "CallScope",
+  "license": "MIT"
 }
